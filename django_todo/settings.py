@@ -22,12 +22,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-))0v&nol0bgb@go-au&%*h&&jv@n(-*9-*=g5b*-@jvqjr#z=g'
+SECRET_KEY = os.environ.get('SECRET_KEY', '---secretkeyvalue---’)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    '8000-jay-o-sullivan-ci-full-s-5vu5woyzax.us2.codeanyapp.com''django-todo-app-1-0c8721ba82dd.herokuapp.com']
+    'django-todo-app-1-0c8721ba82dd.herokuapp.com']
 
 
 # Application definition
@@ -83,7 +84,8 @@ WSGI_APPLICATION = 'django_todo.wsgi.application'
 # }
 # }
 DATABASES = {
-    'default': dj_database_url.parse('postgres://uoczwtng:pt-fv2SKfQeShpBSK2EacHYZ8AeBPXuO@tai.db.elephantsql.com/uoczwtng')
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+
 }
 
 
